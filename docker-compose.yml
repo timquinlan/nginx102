@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  # NGINX basic upstreams
+  upstream1:
+      hostname: upstream1
+      build: upstream
+      expose:
+        - "80"
+  upstream2:
+      hostname: upstream2
+      build: upstream
+      expose:
+        - "80" 
+  mirror1:
+      hostname: mirror1
+      build: upstream
+      expose:
+        - "80" 
+  reverse_proxy:
+      hostname: reverse_proxy
+      build: reverse_proxy
+      #mount project dir as pv
+      volumes:
+          - ./reverse_proxy/etc/nginx:/etc/nginx
+      #direct hostport 8080 to container port 80
+      ports:
+          - 8080:80
+      restart: always
