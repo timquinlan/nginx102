@@ -22,7 +22,9 @@ From the 2nd terminal window use the ab to do some load testing:
 
 Container layout:
                                                               
-                       clients ----> reverse_proxy --------------> mirror
+                       clients ----> reverse_proxy 
+                                           |
+                                           |--------------> mirror
                                            |                  
                                   ------------------
                                 |                    |
