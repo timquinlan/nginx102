@@ -1,4 +1,5 @@
 # nginx102
+Example files for my talk at Ohio Linuxfest 2022.
 
 This demo is self contained, no extra hardware or networking rules required. Requirements are:
 * docker, docker-compose
