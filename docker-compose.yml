@@ -22,6 +22,7 @@ services:
       #mount project dir as pv
       volumes:
           - ./reverse_proxy/etc/nginx:/etc/nginx
+          - ./reverse_proxy/www:/www
       #direct hostport 8080 to container port 80
       ports:
           - 8080:80

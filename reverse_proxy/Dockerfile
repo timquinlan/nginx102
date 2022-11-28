@@ -1,3 +1,5 @@
 FROM nginx:latest
-RUN apt update
-RUN apt install vim -y
+#RUN mkdir -p /www/njs
+#COPY hello.js /www/njs
+#RUN mkdir -p /www/static
+#COPY index.html /www/static
