@@ -13,15 +13,45 @@ Clone this repo and use docker-compose to bring up the environment:
     cd nginx102
     docker-compose up
 
-Open a 2nd terminal window and test with curl:
+Please review the slides and recording for full info (coming soon)
 
-    curl http://localhost:8080/test
+# Test cases
 
-From the 2nd terminal window use the ab to do some load testing:
+Open a 2nd terminal window to run the tests
 
-    ab -n 100 -c 10 http://localhost:8080/
+Basic static page:
 
-Container layout:
+    curl http://localhost:8080/
+
+Load balacing, notice which upstream server is responding by looking at docker-compose output:
+
+    curl http://localhost:8080/lbs
+
+Weighted Load balacing, enable weighted round robin and notice which upstream server is responding by looking at docker-compose output:
+
+    curl http://localhost:8080/lbs
+
+Load testing, notice difference when rate limits are in effect:
+
+    ab -n 100 -c 10 http://localhost:8080/lbs
+
+Persistance, enable ip_hash and notice which upstream server is responding by looking at docker-compose output:
+
+    curl http://localhost:8080/lbs
+
+Mirroring, check for mirrored requests in docker-compose output:
+
+    curl http://localhost:8080/mirror
+
+NJS content handler
+
+    curl http://localhost:8080/njs
+
+NJS body filter
+
+    curl http://localhost:8080/njslower
+
+# Container layout:
                                                               
                        clients ----> reverse_proxy 
                                            |
@@ -30,3 +60,6 @@ Container layout:
                                   ------------------
                                 |                    |
                             upstream1            upstream2
+
+
+
