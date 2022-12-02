@@ -45,7 +45,7 @@ Mirroring, check for mirrored requests in docker-compose output:
 
 NJS content handler
 
-    curl http://localhost:8080/njs
+    curl http://localhost:8080/njshello
 
 NJS body filter
 
